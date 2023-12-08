@@ -7,26 +7,33 @@ const productos = [
   {nombre: "Zapato rojo", tipo: "zapato", color: "rojo", img: "./zapato-rojo.jpg"}
 ];
 
-const listaProductos = document.getElementById("lista-de-productos");
+const listaProductos = document.getElementById("lista-de-productos"); //se cambia name por id
 const inputHTML = document.querySelector('input[type="text"]');
-const botonDeFiltro = document.getElementById("filtrarbtn");
+const botonDeFiltro = document.getElementById("filtrarbtn");//se agrega entrada del boton
 
-for (let i = 0; i < productos.length; i++) {
-  const documentDiv = document.createElement("div");
-  documentDiv.classList.add("producto");
+//se modifican nombres por unos mas descriptivos
+//se cambian var por const
 
-  const titleDiv = document.createElement("p");
-  titleDiv.classList.add("titulo");
-  titleDiv.textContent = productos[i].nombre;
+const displayProductos = (productos) =>{// se agrega funcion display products
+  for (let i = 0; i < productos.length; i++) {
+    const documentDiv = document.createElement("div");
+    documentDiv.classList.add("producto");
 
-  const imagen = document.createElement("img");
-  imagen.setAttribute('src', productos[i].img);
+    const titleDiv = document.createElement("p");
+    titleDiv.classList.add("titulo");
+    titleDiv.textContent = productos[i].nombre;
 
-  documentDiv.appendChild(imagen);
-  documentDiv.appendChild(titleDiv);
+    const imagen = document.createElement("img");
+    imagen.setAttribute('src', productos[i].img);
 
-  listaProductos.appendChild(documentDiv);
+    documentDiv.appendChild(imagen);//se cambia el orden para mejor presentacion
+    documentDiv.appendChild(titleDiv);
+
+    listaProductos.appendChild(documentDiv);
+  }
 }
+
+displayProductos(productos);
 
 botonDeFiltro.onclick = function() {
   while (listaProductos.firstChild) {
